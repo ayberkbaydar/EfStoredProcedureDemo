@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SpEmployeeModelStoreContainer" CdmEntityContainer="SpEmployeeDBContext">
+    <EntitySetMapping Name="SpEmployees">
+      <EntityTypeMapping TypeName="SpEmployeeModel.SpEmployee">
+        <MappingFragment StoreEntitySet="SpEmployees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="SpEmployeeModel.SpEmployee">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="SpEmployeeModel.Store.InsertSpEmployee">
+            <ScalarProperty Name="Salary" ParameterName="Salary" />
+            <ScalarProperty Name="Gender" ParameterName="Gender" />
+            <ScalarProperty Name="Name" ParameterName="Name" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="SpEmployeeModel.Store.UpdateSpEmployee">
+            <ScalarProperty Name="Salary" ParameterName="Salary" Version="Current" />
+            <ScalarProperty Name="Gender" ParameterName="Gender" Version="Current" />
+            <ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+            <ScalarProperty Name="ID" ParameterName="ID" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="SpEmployeeModel.Store.DeleteSpEmployee">
+            <ScalarProperty Name="ID" ParameterName="Id" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DeleteSpEmployee" FunctionName="SpEmployeeModel.Store.DeleteSpEmployee" />
+    <FunctionImportMapping FunctionImportName="InsertSpEmployee" FunctionName="SpEmployeeModel.Store.InsertSpEmployee" />
+    <FunctionImportMapping FunctionImportName="UpdateSpEmployee" FunctionName="SpEmployeeModel.Store.UpdateSpEmployee" />
+  </EntityContainerMapping>
+</Mapping>
